@@ -1,24 +1,33 @@
 import { describe, expect, it } from "vitest";
-import { sum, sumException } from "..";
-import { SumException } from "../errors/sum.exception";
+import { addToCart, calculateDiscount, calculateShipping } from "..";
 
-describe("Testing sum function", () => {
-  it("Should sum a + b", () => {
-    const result = sum(3, 6);
+describe("Testing marketplace function", () => {
+  it("Should add an item at the cart", () => {
+    const result = addToCart(2, 0);
     expect(result).toEqual(expect.any(Number));
   });
 
-  it("Should return result equal 12", () => {
-    const result = sum(7, 5);
-    expect(result).toEqual(12);
+  it("Should return the value final with 50% of discount", () => {
+    const result = calculateDiscount(5, 50);
+    expect(result).toEqual(25);
   });
 
-  it("Should not return negative result", () => {
-    const result = sum(-9, 10);
-    expect(result).greaterThan(0);
+  it("Shouldnt give discount if the quantity is less than 5", () => {
+    const result = calculateDiscount(4, 50);
+    expect(result).toEqual(50);
   });
 
-  it("Should throw an exception", () => {
-    expect(() => sumException(2, 6)).throw(SumException);
+  it("Should give 10% discount if the quantity is greater than 3", () => {
+    const result = calculateShipping(4, 30);
+    expect(result).toEqual(27);
   });
+
+  it("Shouldnt give shipping discount if the quantity is less than 3", () => {
+    const result = calculateShipping(2, 50);
+    expect(result).toEqual(50);
+  });
+
+  // it("Should throw an exception", () => {
+  //   expect(() => sumException(2, 6)).throw(SumException);AQUE
+  // });
 });

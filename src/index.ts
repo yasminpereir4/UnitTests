@@ -1,13 +1,24 @@
-import { SumException } from "./errors/sum.exception";
-
-export function sum(a: number, b: number) {
-  return a + b;
+export function addToCart(quantity: number, itemsCart: number) {
+  if (quantity >= 1) {
+    itemsCart += quantity;
+  }
+  return itemsCart;
 }
 
-export function div(a: number, b: number) {
-  return a / b;
+export function calculateDiscount(quantity: number, totalValue: number) {
+  if (quantity >= 5) {
+    totalValue *= 0.5;
+  }
+  return totalValue;
 }
 
-export function sumException(a: number, b: number) {
-  throw new SumException();
+export function calculateShipping(quantity: number, shipping: number) {
+  if (quantity >= 3) {
+    shipping *= 0.9;
+  }
+  return shipping;
 }
+
+// export function sumException(a: number, b: number) {
+//   throw new SumException();
+// }
