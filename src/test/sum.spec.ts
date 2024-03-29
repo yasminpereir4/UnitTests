@@ -18,18 +18,10 @@ describe("Testing marketplace function", () => {
   });
 
   it("Should give 10% discount if the quantity is greater than 3", () => {
-    const result = calculateShipping(4, 50);
-    expect(result).toEqual(45);
-  });
-
-  it("Should give 10% discount if the quantity is greater than 3", () => {
-    const result = calculateShipping(4, 40);
-    expect(result).toEqual(36);
-  });
-
-  it("Should give 10% discount if the quantity is greater than 3", () => {
-    const result = calculateShipping(4, 30);
-    expect(result).toEqual(27);
+    expect(calculateShipping(4, 50)).toEqual(45);
+    expect(calculateShipping(4, 40)).toEqual(36);
+    expect(calculateShipping(4, 30)).toEqual(27);
+    expect(calculateShipping(4, 70)).toEqual(63);
   });
 
   it("Shouldnt give shipping discount if the quantity is less than 3", () => {
